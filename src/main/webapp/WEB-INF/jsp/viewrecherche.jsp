@@ -7,7 +7,7 @@
   <c:forEach var="personne" items="${liste}">
     <tr>
       <td>${personne.nom}</td>
-      <td>${personne.prenom}</td>○
+      <td>${personne.prenom}</td>
       <td>${personne.civilite}</td>
       <td>${personne.adresse}</td>
 
@@ -17,4 +17,4 @@
   </c:forEach>
 </table>
 <br/>
-<a href="personneform">Ajouter personne</a>○
+<a href="personneform">Ajouter personne</a>
