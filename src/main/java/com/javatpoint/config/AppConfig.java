@@ -1,11 +1,13 @@
 package com.javatpoint.config;
 
-import com.javatpoint.security.LoginSecurityConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -23,7 +25,6 @@ public class AppConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new
                 DriverManagerDataSource();
-
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/crud");
         dataSource.setUsername("root");
@@ -38,6 +39,19 @@ public class AppConfig {
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+    @Bean
+    public ResourceBundleMessageSource messageSource(){
+        ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
+        rb.setBasenames(new String[]{"validation"});
+        return rb;
+    }
+    @Autowired
+    @Bean(name = "transactionManager")
+    public DataSourceTransactionManager getTransactionManager(DataSource dataSource) {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
+
+        return transactionManager;
     }
 
     @Bean

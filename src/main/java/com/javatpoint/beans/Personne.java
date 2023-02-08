@@ -3,7 +3,7 @@ package com.javatpoint.beans;
 
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
 @Table(name="PERSONNE")
@@ -12,9 +12,6 @@ public class Personne{
     public String toString() {
         return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom
                 + ", civilite=" + civilite + ", adresse=" + adresse + ", dateNaissance=" + dateNaissance + "]";
-    }
-    public String toStringDateNaissance() {
-        return "" + dateNaissance;
     }
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

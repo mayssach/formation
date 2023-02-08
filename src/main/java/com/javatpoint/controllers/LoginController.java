@@ -6,14 +6,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 public class LoginController {
+
+
     @RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public ModelAndView welcomePage() {
         ModelAndView model = new ModelAndView();
         model.setViewName("welcomePage");
         return model;
     }
+
 
     @RequestMapping(value = { "/homePage"}, method = RequestMethod.GET)
     public ModelAndView homePage() {
@@ -38,4 +42,5 @@ public class LoginController {
         model.setViewName("loginPage");
         return model;
     }
+
 }
